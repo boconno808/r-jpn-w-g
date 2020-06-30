@@ -1,30 +1,28 @@
-import React, { useState, useEffect, useContext, }  from "react"
+import React, { useState, useEffect, }  from "react"
 import { Link } from "gatsby"
 import Layout from "../components/layout"
-import SEO from "../components/seo"
-import { GlobalDispatchContext, GlobalStateContext,} from '../context/GlobalContextProvider'
+import Loading from "../components/loading"
+import WordDisplay from "../components/wordDisplay"
 
 const IndexPage = () => {
 
-  const [loadingWords, setLoadingWords] = useState(true);
-  const [loadingJpn, setLoadingJpn] = useState(true);
+  const [loadingText, setLoadingText] = useState('Loading Words...');
+  const [doneLoading, setDoneLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [wotdJpn, setwotdJpn] = useState('');
+  const [rndJpn, setrndJpn] = useState('');
   const [isCommon, setIsCommon] = useState(false);
-  const [wotdReading, setWotdReading] = useState('');
+  const [rndReading, setrndReading] = useState('');
   const [jlpt, setJlpt] = useState(undefined);
-  const [wotdEngDef, setwotdEngDef] = useState('');
+  const [rndEngDef, setrndEngDef] = useState('');
 
-  const dispatch = useContext(GlobalDispatchContext)
-  const state = useContext(GlobalStateContext)
-  console.log(state)
-  console.log(dispatch)
 
   useEffect(() => {
      handleGetWord();
   },[]);
 
+
   async function handleGetWord(){
+
     fetch('https://random-word-api.herokuapp.com/word?number=200').then(response => {
         if (!response.ok) {
             setError(true);
@@ -32,7 +30,7 @@ const IndexPage = () => {
         }
         return response;
     }).then(response => {
-      setLoadingWords(false);
+      setLoadingText('Loading Translation...');
       return response.json();
     }).then( response => {
       var wordsTried = 0;
@@ -49,13 +47,14 @@ const IndexPage = () => {
             if (json.data.length > 0){
               console.log(json)
               console.log("JSON"+json.data[0].japanese[0].word);
-              setLoadingJpn(false);
-              setwotdJpn(json.data[0].japanese[0].word);
-              setWotdReading(json.data[0].japanese[0].reading);
+              setLoadingText('Finished!');
+              setDoneLoading(true);
+              setrndJpn(json.data[0].japanese[0].word);
+              setrndReading(json.data[0].japanese[0].reading);
               console.log(typeof json.data[0].jlpt[0]);
               setJlpt(json.data[0].jlpt[0])
               setIsCommon(json.data[0].is_common);
-              setwotdEngDef(json.data[0].senses[0].english_definitions[0]);
+              setrndEngDef(json.data[0].senses[0].english_definitions[0]);
             } else {
               wordsTried = wordsTried + 1;
               fetchJpn();
@@ -71,41 +70,31 @@ const IndexPage = () => {
 
   return (
     <Layout>
-      <SEO title="Home" />
-      <h1>{wotdJpn}</h1>
-      <h4>{wotdReading}</h4>
-      <p> Definition: {wotdEngDef}</p>
+      <div
+      style={{
+        position: `absolute`,
+        top: `15rem`,
+        left: `50%`,
+        transform: `translate(-50%, -50%)`,
+        textAlign: `center`,
+      }}>
       {
-        loadingWords && (<p>LOADING RANDOM WORD...</p>
-        )
+        !doneLoading && <Loading loadState = {loadingText}/>
       }
       {
-        loadingJpn && (<p>LOADING TRANSLATION...</p>
-        )
+        doneLoading &&
+        < WordDisplay
+          rndJpn = {rndJpn}
+          rndReading = {rndReading}
+          rndEngDef = {rndEngDef}
+          jlpt = {jlpt}
+          isCommon = {isCommon}
+        />
       }
       {
         error &&
         <p>There was an error fetching the data :(</p>
       }
-      {
-        (jlpt === undefined) ? (<p> The jlpt level is unknown </p>):(<p> The jlpt level of this word is {jlpt} </p>)
-      }
-      {
-        isCommon ? (<p> This word is common </p>):(<p> This word is uncommon </p>)
-      }
-      <p>Counter: </p>
-      <button className = "ui green button">+</button><button className = "ui red button">-</button>
-
-      <div>
-        <button
-        style={{marginTop: '1.5rem'}}
-        className = "ui blue button"
-        onClick={() => {
-           dispatch({ type: "LOADING_TRANS" })
-         }}
-        >
-          Login
-        </button>
       </div>
     </Layout>
   )
