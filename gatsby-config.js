@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Semantic UI Documentation`,
-    description: `The style guide and component library for Semantic UI`,
-    author: `@whoisryosuke`,
+    title: `Japanese Generator`,
+    description: `Site that generates random Japanese words with English definitions`,
+    author: `@whoisryosuke & @boconno808`,
     sidebar: {
       pages: [
         {
