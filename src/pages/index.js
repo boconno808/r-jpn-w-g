@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 import Layout from "../components/layout"
 import Loading from "../components/loading"
 import WordDisplay from "../components/wordDisplay"
+import Arrow from './arrow.png'
 
 const IndexPage = () => {
 
@@ -82,45 +83,61 @@ const IndexPage = () => {
 
   return (
     <Layout>
-      <div
+      <div>
+      <img
+      src={Arrow}
+      alt="Arrow"
       style={{
-        position: `absolute`,
-        top: `15rem`,
-        left: `50%`,
-        transform: `translate(-50%, -50%)`,
-        textAlign: `center`,
-      }}>
-      {
-        !doneLoading && <Loading loadState = {loadingText}/>
-      }
-      {
-        doneLoading &&
-        < WordDisplay
-          rndJpn = {rndJpn}
-          rndReading = {rndReading}
-          rndEngDef = {rndEngDef}
-          jlpt = {jlpt}
-          isCommon = {isCommon}
-        />
-      }
-      {
-        doneLoading &&
-        <button
-        className="ui animated vertical orange button"
-        onClick= {() => handleGetWord(false)}
-        onKeyDown= {() => handleGetWord(false)}
-        style={{margin: `2rem`}}
-        >
-          <div className="visible content">Again</div>
-          <div className="hidden content">
-            引き直す
-          </div>
-        </button>
-      }
-      {
-        error &&
-        <p>There was an error fetching the data :(</p>
-      }
+        float: `left`,
+      }}
+      />
+      <img
+      src={Arrow}
+      alt="Arrow"
+      style={{
+        float: `right`,
+      }}
+      />
+        <div
+        style={{
+          position: `absolute`,
+          top: `16rem`,
+          left: `50%`,
+          transform: `translate(-50%, -50%)`,
+          textAlign: `center`,
+        }}>
+          {
+            !doneLoading && <Loading loadState = {loadingText}/>
+          }
+          {
+            doneLoading &&
+            < WordDisplay
+              rndJpn = {rndJpn}
+              rndReading = {rndReading}
+              rndEngDef = {rndEngDef}
+              jlpt = {jlpt}
+              isCommon = {isCommon}
+            />
+          }
+          {
+            doneLoading &&
+            <button
+            className="ui animated vertical red button"
+            onClick= {() => handleGetWord(false)}
+            onKeyDown= {() => handleGetWord(false)}
+            style={{margin: `2rem`}}
+            >
+              <div className="visible content">Again</div>
+              <div className="hidden content">
+                引き直す
+              </div>
+            </button>
+          }
+          {
+            error &&
+            <p>There was an error fetching the data :(</p>
+          }
+        </div>
       </div>
     </Layout>
   )

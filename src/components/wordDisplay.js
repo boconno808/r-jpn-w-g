@@ -17,7 +17,7 @@ export default function WordDisplay({rndJpn, rndReading, rndEngDef, jlpt, isComm
 
         <div class="ui medium header"> Definition: {rndEngDef}</div>
         {
-          (jlpt === undefined) ? (<p> The jlpt level is unknown </p>):(<p> The jlpt level of this word is {jlpt} </p>)
+          (jlpt === undefined) ? (<p> The JLPT level is unknown </p>):(<p> The jlpt level of this word is {jlpt} </p>)
         }
         {
           isCommon ? (<p> This word is common </p>):(<p> This word is uncommon </p>)

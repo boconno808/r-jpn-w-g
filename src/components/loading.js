@@ -4,7 +4,7 @@ export default function Loading({ loadState }) {
   return (
     <div>
       <div
-      className="ui active massive text inline center loader"
+      className="ui active huge text inline center loader"
       >
       { loadState }
       </div>
