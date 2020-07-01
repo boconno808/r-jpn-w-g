@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import { Dropdown, Menu, Sidebar } from "semantic-ui-react"
+import { Menu, Sidebar } from "semantic-ui-react"
 
 import capitalize from "@tools/capitalize"
 

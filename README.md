@@ -1,6 +1,9 @@
 ## Random Japanese Word Generator
 
-This website allows one to randomly generate Japanese words with English definitions, it also shows whether or not the word generated is common and if it is known to correspond with a specific Jlpt level.
+Simple website that allows one to randomly generate Japanese words with English definitions, it also shows whether or not the word generated is common and if it is known to correspond with a specific JLPT level.
+You can keep pulling new words by clicking the button.
+
+Created the logo and arrows in Photoshop.
 
 Have fun!
 

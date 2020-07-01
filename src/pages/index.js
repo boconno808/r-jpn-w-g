@@ -1,9 +1,8 @@
 import React, { useState, useEffect, }  from "react"
-import { Link } from "gatsby"
 import Layout from "../components/layout"
 import Loading from "../components/loading"
 import WordDisplay from "../components/wordDisplay"
-import Arrow from './arrow.png'
+import Arrow from '../images/arrow.png'
 
 const IndexPage = () => {
 
@@ -135,7 +134,20 @@ const IndexPage = () => {
           }
           {
             error &&
+            <div>
             <p>There was an error fetching the data :(</p>
+            <button
+            className="ui animated vertical red button"
+            onClick= {() => handleGetWord(false)}
+            onKeyDown= {() => handleGetWord(false)}
+            style={{margin: `2rem`}}
+            >
+              <div className="visible content">Again</div>
+              <div className="hidden content">
+                引き直す
+              </div>
+            </button>
+            </div>
           }
         </div>
       </div>

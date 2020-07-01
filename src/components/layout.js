@@ -1,6 +1,5 @@
 import React from "react"
 import PropTypes from 'prop-types'
-import DocSidebar from "./sidebar"
 import { Helmet } from "react-helmet"
 import "./layout.scss"
 import SiteTitle from './header'
