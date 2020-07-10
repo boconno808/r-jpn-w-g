@@ -108,7 +108,7 @@ const IndexPage = () => {
             !doneLoading && <Loading loadState = {loadingText}/>
           }
           {
-            doneLoading &&
+            doneLoading && !error &&
             < WordDisplay
               rndJpn = {rndJpn}
               rndReading = {rndReading}
@@ -118,7 +118,7 @@ const IndexPage = () => {
             />
           }
           {
-            doneLoading &&
+            doneLoading && !error &&
             <AgainBtn
               onClick = {() => handleGetWord(false)}
               onKeyDown = {() => handleGetWord(false)}
@@ -127,18 +127,11 @@ const IndexPage = () => {
           {
             error &&
             <div>
-            <p>There was an error fetching the data :(</p>
-            <button
-            className="ui animated vertical red button"
-            onClick= {handleGetWord(false)}
-            onKeyDown= {handleGetWord(false)}
-            style={{margin: `2rem`}}
-            >
-              <div className="visible content">Again</div>
-              <div className="hidden content">
-                引き直す
-              </div>
-            </button>
+              <h1>There was an error fetching the data :(</h1>
+              <AgainBtn
+                onClick = {() => handleGetWord(false)}
+                onKeyDown = {() => handleGetWord(false)}
+              />
             </div>
           }
         </div>
