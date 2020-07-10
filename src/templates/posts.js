@@ -4,9 +4,9 @@ import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import * as Semantic from "semantic-ui-react"
 
-import CodeBlock from "@components/codeblock"
+import CodeBlock from "@components/old/codeblock"
 import Layout from "@components/layout"
-import Masthead from "@components/masthead"
+import Masthead from "@components/old/masthead"
 
 const components = {
   pre: props => <div {...props} />,

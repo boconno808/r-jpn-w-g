@@ -2,6 +2,7 @@ import React, { useState, useEffect, }  from "react"
 import Layout from "../components/layout"
 import Loading from "../components/loading"
 import WordDisplay from "../components/wordDisplay"
+import AgainBtn from "../components/againBtn"
 import Arrow from '../images/arrow.png'
 
 const IndexPage = () => {
@@ -57,12 +58,10 @@ const IndexPage = () => {
             return jpnResponse.json();
           }).then( json => {
             if (json.data.length > 0){
-              console.log(json)
               console.log("JSON"+json.data[0].japanese[0].word);
               setDoneLoading(true);
               setRndJpn(json.data[0].japanese[0].word);
               setRndReading(json.data[0].japanese[0].reading);
-              console.log(typeof json.data[0].jlpt[0]);
               setJlpt(json.data[0].jlpt[0])
               setIsCommon(json.data[0].is_common);
               setRndEngDef(json.data[0].senses[0].english_definitions[0]);
@@ -120,17 +119,10 @@ const IndexPage = () => {
           }
           {
             doneLoading &&
-            <button
-            className="ui animated vertical red button"
-            onClick= {() => handleGetWord(false)}
-            onKeyDown= {() => handleGetWord(false)}
-            style={{margin: `2rem`}}
-            >
-              <div className="visible content">Again</div>
-              <div className="hidden content">
-                引き直す
-              </div>
-            </button>
+            <AgainBtn
+              onClick = {() => handleGetWord(false)}
+              onKeyDown = {() => handleGetWord(false)}
+            />
           }
           {
             error &&
@@ -138,8 +130,8 @@ const IndexPage = () => {
             <p>There was an error fetching the data :(</p>
             <button
             className="ui animated vertical red button"
-            onClick= {() => handleGetWord(false)}
-            onKeyDown= {() => handleGetWord(false)}
+            onClick= {handleGetWord(false)}
+            onKeyDown= {handleGetWord(false)}
             style={{margin: `2rem`}}
             >
               <div className="visible content">Again</div>

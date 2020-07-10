@@ -11,21 +11,21 @@ const Layout = ({ children }) => {
     <Helmet>
           <meta charSet="utf-8" />
           <title>Japanese Generator</title>
-        </Helmet>
+    </Helmet>
     <div className = "bg">
-      <header
+      <div
       style={{
-        padding:`.75rem .5rem .5rem 2rem`,
+        padding:`1rem .5rem .5rem 1rem`,
       }}
       >
         <SiteTitle/>
-      </header>
+      </div>
       <div className = "outerDiv">
         <div className = "note">
             <main>{children}</main>
-          </div>
         </div>
       </div>
+    </div>
     </>
   )
 }

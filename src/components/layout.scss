@@ -1,13 +1,12 @@
 .bg {
-  background: #000000,
+  background: #000000;
 }
 
 .outerDiv {
   background: #000000;
-  height: 95%;
+  height: 100%;
   width: 100%;
   position: absolute;
-  overflow: hidden;
 }
 
 .note {
@@ -16,7 +15,7 @@
   height: 50%;
   width: 50%;
   position: inherit;
-  top: 25%;
+  top: 15%;
   left: 25%;
   padding-top: 2rem;
   overflow: auto;
