@@ -8,6 +8,7 @@ Created the logo and arrows in Photoshop.
 Have fun!
 
 This project was created using Gatsby, started from this boilerplate: https://www.gatsbyjs.org/starters/whoisryosuke/semantic-ui-docs-gatsby/
+Website deployed here: https://randomjpnwordgen.netlify.app/
 
 **Apis used**
 ---
