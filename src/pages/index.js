@@ -45,7 +45,7 @@ const IndexPage = () => {
       return response.json();
     }).then( response => {
       var wordsTried = 0;
-      const proxyurl = "https://thingproxy.freeboard.io/fetch/";
+      const proxyurl = "https://thingproxy.freeboard.io/fetch";
       var fetchJpn = () => {
         var currentWord = response[wordsTried];
         fetch(proxyurl+`https://jisho.org/api/v1/search/words?keyword=${currentWord}`).then(
