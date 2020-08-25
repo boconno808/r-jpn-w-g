@@ -58,7 +58,6 @@ const IndexPage = () => {
             return jpnResponse.json();
           }).then( json => {
             if (json.data.length > 0){
-              console.log("JSON"+json.data[0].japanese[0].word);
               setDoneLoading(true);
               setRndJpn(json.data[0].japanese[0].word);
               setRndReading(json.data[0].japanese[0].reading);
