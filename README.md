@@ -9,6 +9,8 @@ Have fun!
 
 This project was created using Gatsby, started from this boilerplate: https://www.gatsbyjs.org/starters/whoisryosuke/semantic-ui-docs-gatsby/
 
+Website deployed here: https://randomjpnwordgen.netlify.app/
+
 **Apis used**
 ---
 Used DenshiJishos beta API to get the Japanese words with their definitions:
