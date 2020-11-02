@@ -113,7 +113,7 @@ const IndexPage = () => {
               rndReading = {rndReading}
               rndEngDef = {rndEngDef}
               jlpt = {jlpt}
-              isCommon = {isCommon}
+              isCommon = n{isCommon}
             />
           }
           {
@@ -126,7 +126,7 @@ const IndexPage = () => {
           {
             error &&
             <div>
-              <h1>There was an error fetching the data :(</h1>
+              <h1>There was an error fetching the data... API is down... please come back later :(</h1>
               <AgainBtn
                 onClick = {() => handleGetWord(false)}
                 onKeyDown = {() => handleGetWord(false)}
