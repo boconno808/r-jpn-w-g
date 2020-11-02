@@ -104,7 +104,7 @@ const IndexPage = () => {
           textAlign: `center`,
         }}>
           {
-            !doneLoading && <Loading loadState = {loadingText}/>
+            !doneLoading && !error && <Loading loadState = {loadingText}/>
           }
           {
             doneLoading && !error &&
@@ -113,7 +113,7 @@ const IndexPage = () => {
               rndReading = {rndReading}
               rndEngDef = {rndEngDef}
               jlpt = {jlpt}
-              isCommon = n{isCommon}
+              isCommon = {isCommon}
             />
           }
           {
